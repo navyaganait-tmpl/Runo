@@ -1,7 +1,7 @@
 require("dotenv/config")
  
 const {
-  DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_URI} = process.env;
+  DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_URI,DB_SSL} = process.env;
  
 const development = {
   dialect: "postgres",
@@ -11,10 +11,10 @@ const development = {
   database: DB_NAME,
   host: DB_HOST,
   port: Number(DB_PORT),
-  ssl: false,
+  ssl: DB_SSL,
   db_uri:DB_URI,
   // logging: LOGGING,
-  // db_uri: DB_URI
+  // db_uri: DB_URI 
 };
  
 module.exports = {development}
