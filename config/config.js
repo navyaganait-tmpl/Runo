@@ -11,7 +11,7 @@ const development = {
   database: DB_NAME,
   host: DB_HOST,
   port: Number(DB_PORT),
-  ssl: true,
+  ssl: false,
   db_uri:DB_URI,
   // logging: LOGGING,
   // db_uri: DB_URI
