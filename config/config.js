@@ -12,7 +12,13 @@ const development = {
   host: DB_HOST,
   port: Number(DB_PORT),
   ssl: DB_SSL,
-  db_uri:DB_URI,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+//   db_uri:DB_URI,
   // logging: LOGGING,
   // db_uri: DB_URI 
 };
