@@ -14,6 +14,14 @@ module.exports={
                   where: {
                     name: authorName,
                   },
+                  through: {
+                    model: db.authorauthorcategory,
+                  }, include: [
+                    {
+                      model: db.author_category,
+                      attributes: ['title'], // Include relevant fields from author_category
+                    },
+                  ],
                 },
                 {
                   model: db.category,

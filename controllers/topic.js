@@ -7,7 +7,15 @@ module.exports={
     try {
 
       const topics = await db.topic.findAll({
-        include: [{ model: db.author },{
+        include: [{ model: db.author,
+          through: {
+            model: db.authorauthorcategory,
+          }, include: [
+            {
+              model: db.author_category,
+              attributes: ['title'], // Include relevant fields from author_category
+            },
+          ],},{
           model: db.category,
         }],
         limit: 8,
@@ -24,7 +32,15 @@ module.exports={
       const topicId = req.params.id;
 
       const topic = await db.topic.findByPk(topicId, {
-        include: [{ model: db.author },{
+        include: [{ model: db.author,
+          through: {
+            model: db.authorauthorcategory,
+          }, include: [
+            {
+              model: db.author_category,
+              attributes: ['title'], // Include relevant fields from author_category
+            },
+          ], },{
           model: db.category,
         }],
       });
@@ -43,7 +59,15 @@ module.exports={
     try {
 
       const topics = await db.topic.findAll({
-        include: [{ model: db.author },{
+        include: [{ model: db.author,
+          through: {
+            model: db.authorauthorcategory,
+          }, include: [
+            {
+              model: db.author_category,
+              attributes: ['title'], // Include relevant fields from author_category
+            },
+          ], },{
           model: db.category,
         }],
         limit:8,
@@ -62,7 +86,15 @@ module.exports={
 
     //   Find blogs where title or content is similar to the search term
       const topics = await db.topic.findAll({
-        include: [{ model: db.author },{
+        include: [{ model: db.author ,
+          through: {
+            model: db.authorauthorcategory,
+          }, include: [
+            {
+              model: db.author_category,
+              attributes: ['title'], // Include relevant fields from author_category
+            },
+          ],},{
           model: db.category,
         }],
         where: {

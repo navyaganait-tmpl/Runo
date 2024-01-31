@@ -20,7 +20,15 @@ module.exports={
       
           
           const topics = await db.topic.findAll({
-            include: [{ model: db.author },
+            include: [{ model: db.author,
+              through: {
+                model: db.authorauthorcategory,
+              }, include: [
+                {
+                  model: db.author_category,
+                  attributes: ['title'], // Include relevant fields from author_category
+                },
+              ], },
               {
                 model: db.category,
                 where: {
@@ -38,27 +46,5 @@ module.exports={
         }
       },
       
-      getSearchedTopic: async (req, res) => {
-        try {
-          const searchTerm = req.params.searchTerm;
-    
-          // Find blogs where title or content is similar to the search term
-          const topics = await db.topic.findAll({
-            include: [{ model: db.author },{
-              model: db.category,
-            }],
-            where: {
-              [db.Sequelize.Op.or]: [
-                { title: { [db.Sequelize.Op.iLike]: `%${searchTerm}%` } },
-                { description: { [db.Sequelize.Op.iLike]: `%${searchTerm}%` } },
-              ],
-            },
-          });
-    
-          return res.status(200).json(similarBlogs);
-        } catch (error) {
-          console.error('Error fetching similar blogs:', error);
-          return res.status(500).json({ error: 'Internal Server Error' });
-        }
-      },
+      
     }
