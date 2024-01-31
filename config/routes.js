@@ -5,6 +5,6 @@ const authorRouter=require("../routes/author");
 module.exports=function(app){
 console.log("in rotes");
 app.use('/',topicRouter);
-app.use('/',categoryRouter);
+app.use('/category',categoryRouter);
 app.use('/',authorRouter);
 }
