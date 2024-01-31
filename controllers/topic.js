@@ -19,6 +19,7 @@ module.exports={
           model: db.category,
         }],
         limit: 8,
+        order: [['rating', 'DESC']],
       });
 
       return res.status(200).json(topics);

@@ -41,6 +41,7 @@ module.exports = {
         },
         ],
         limit: 8,
+        order: [['rating', 'DESC']],
       });
       // console.log(blogs[0]);
       return res.status(200).json(topics);
